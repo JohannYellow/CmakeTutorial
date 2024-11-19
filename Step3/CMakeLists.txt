@@ -21,7 +21,7 @@ configure_file(TutorialConfig.h.in TutorialConfig.h)
 
 # add the MathFunctions library
 add_subdirectory(MathFunctions)
-list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/MathFunctions")
+#list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/MathFunctions")      Replace by target_include_directories(MathFunctions INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
 
 # add the executable
 add_executable(Tutorial tutorial.cxx)
@@ -36,5 +36,5 @@ target_link_libraries(Tutorial PUBLIC MathFunctions)
 # so that we will find TutorialConfig.h
 target_include_directories(Tutorial PUBLIC
                            "${PROJECT_BINARY_DIR}"
-                           ${EXTRA_INCLUDES}
+                           # ${EXTRA_INCLUDES}      Replace by target_include_directories(MathFunctions INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
                            )
